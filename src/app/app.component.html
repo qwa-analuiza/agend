@@ -1,0 +1,126 @@
+<!-- NAVBAR -->
+<header class="nav" [class.scrolled]="scrolled" [class.open]="menuOpen">
+  <a class="logo" href="#inicio" aria-label="Camila Nail Studio" (click)="closeMenu()">
+    <svg class="logo-mark" viewBox="0 0 48 48" aria-hidden="true">
+      <defs>
+        <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#e3c48f"/><stop offset=".5" stop-color="#b8915a"/><stop offset="1" stop-color="#8a6a3b"/>
+        </linearGradient>
+      </defs>
+      <circle cx="24" cy="24" r="22.5" fill="none" stroke="url(#gold)" stroke-width="1.2"/>
+      <circle cx="24" cy="24" r="19" fill="none" stroke="url(#gold)" stroke-width=".5"/>
+      <text x="24" y="32.5" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-weight="600" font-size="27" fill="url(#gold)">C</text>
+      <path d="M24 3.2l1.6 2.2L24 7.6l-1.6-2.2z" fill="url(#gold)"/>
+    </svg>
+    <span class="logo-text">
+      <span class="logo-name">Camila</span>
+      <span class="logo-sub">Nail Studio</span>
+    </span>
+  </a>
+
+  <nav class="menu" id="menu" aria-label="Principal">
+    <a *ngFor="let l of links" [href]="l.href" (click)="closeMenu()">{{ l.label }}</a>
+    <div class="menu-actions-mobile">
+      <a class="btn btn-gold" [href]="whatsapp" target="_blank" rel="noopener">Agendar horário</a>
+    </div>
+  </nav>
+
+  <div class="actions">
+    <a class="entrar" href="#agendar">Entrar</a>
+    <a class="btn btn-gold" [href]="whatsapp" target="_blank" rel="noopener">Criar conta</a>
+  </div>
+
+  <button class="burger" type="button" (click)="toggleMenu()" [attr.aria-expanded]="menuOpen" aria-controls="menu" aria-label="Abrir menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <img class="hero-img" src="assets/images/hero.jpg" alt="Camila segurando esmaltes em gel diante do rosto">
+    <div class="hero-content">
+      <span class="pill">Nail art · Manicure · Pedicure</span>
+      <h1>Unhas que contam a sua <em>história.</em></h1>
+      <p>Olá, sou a Camila! Especialista em nail art e manicure &amp; pedicure. Cada detalhe pensado só para você.</p>
+      <div class="hero-btns">
+        <a class="btn btn-gold btn-lg" [href]="whatsapp" target="_blank" rel="noopener">Agendar horário</a>
+        <a class="btn btn-white btn-lg" href="#servicos">Ver serviços</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section class="sobre" id="sobre">
+    <div class="sobre-fotos">
+      <img class="foto-main" src="assets/images/sobre.jpg" alt="Retrato da Camila">
+      <div class="thumbs">
+        <img src="assets/images/retrato-2.jpg" alt="Mãos com unhas em nude" style="object-position: 75% 92%">
+        <img src="assets/images/hero.jpg" alt="Esmaltes em gel" style="object-position: 35% 45%">
+        <img src="assets/images/retrato-2.jpg" alt="Camila em retrato" style="object-position: 50% 15%">
+      </div>
+    </div>
+    <div class="sobre-texto">
+      <small>Sobre mim</small>
+      <h2>Cada esmalte tem <em>a sua assinatura.</em></h2>
+      <p>Com mais de 5 anos dedicados à arte das unhas, cada atendimento é uma expressão única de cuidado, técnica e personalidade.</p>
+      <p>Especializada em nail art, gel, acrílico e manicure/pedicure tradicional, o resultado sempre reflete quem você é.</p>
+      <p class="destaque">Suas unhas merecem uma artista. Não apenas uma manicure.</p>
+      <div class="chips">
+        <div><strong>Nail Art</strong><span>Designs únicos</span></div>
+        <div><strong>Manicure</strong><span>Alto padrão</span></div>
+        <div><strong>Pedicure</strong><span>Cuidado total</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS -->
+  <section class="servicos" id="servicos">
+    <small>O que ofereço</small>
+    <h2>Serviços</h2>
+    <div class="cards">
+        <article class="card" *ngFor="let s of servicos">
+          <span class="card-cat">{{ s.categoria }}</span>
+          <h3>{{ s.nome }}</h3>
+          <p>{{ s.descricao }}</p>
+          <div class="card-foot">
+            <strong>{{ s.preco }}</strong>
+            <a [href]="whatsapp" target="_blank" rel="noopener" [attr.aria-label]="'Agendar ' + s.nome">+</a>
+          </div>
+        </article>
+    </div>
+    <a class="btn btn-gold" [href]="whatsapp" target="_blank" rel="noopener">Agendar agora</a>
+  </section>
+
+  <!-- DEPOIMENTOS -->
+  <section class="depoimentos" id="depoimentos">
+    <small>Clientes felizes</small>
+    <h2>Depoimentos</h2>
+    <div class="cards three">
+        <figure class="review" *ngFor="let d of depoimentos">
+          <div class="stars" aria-label="5 estrelas">★★★★★</div>
+          <blockquote>“{{ d.texto }}”</blockquote>
+          <figcaption>
+            <span class="avatar">{{ d.nome[0] }}</span>
+            <span><strong>{{ d.nome }}</strong><small>{{ d.funcao }}</small></span>
+          </figcaption>
+        </figure>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="agendar">
+    <div class="cta-inner">
+      <div>
+        <small>Pronta para se cuidar?</small>
+        <h2>Reserve o seu horário agora.</h2>
+      </div>
+      <a class="btn btn-white btn-lg" [href]="whatsapp" target="_blank" rel="noopener">Agendar agora</a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <span class="logo-text"><span class="logo-name">Camila</span><span class="logo-sub">Nail Studio</span></span>
+  <span>© {{ ano }} Camila Nail Studio. Todos os direitos reservados.</span>
+</footer>
